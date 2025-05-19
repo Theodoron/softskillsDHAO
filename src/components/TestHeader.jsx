@@ -1,40 +1,44 @@
+// src/components/TestHeader.jsx
 import React from 'react';
 
 const TestHeader = () => {
   return (
-    <header
-      style={{
-        maxWidth: '960px',
+    <header style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      zIndex: 1000,
+      backgroundColor: '#5B3C8B',
+      color: '#fff',
+      boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+    }}>
+      {/* wrapper centré à 600px pour aligner avec les questions */}
+      <div style={{
+        width: '100%',
+        maxWidth: '600px',
         margin: '0 auto',
+        padding: '1rem 1rem',
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#5B3C8B',
-        color: 'white',
-        padding: '1.5rem 2rem', // hauteur augmentée
-        gap: '1rem',
-        borderTopLeftRadius: '16px',
-        borderTopRightRadius: '16px',
-        borderBottomLeftRadius: '0px',
-        borderBottomRightRadius: '0px'
-      }}
-    >
-      <img
-        src="/logo.png"
-        alt="Logo"
-        style={{ height: '50px', width: 'auto' }}
-      />
-      <h1
-        style={{
+        justifyContent: 'center',
+        gap: '1rem'
+      }}>
+        <img
+          src="/logo.png"
+          alt="Logo SoftSkills"
+          style={{ height: '3rem', flexShrink: 0 }}
+        />
+        <h1 style={{
           fontFamily: "'Quicksand', sans-serif",
           fontWeight: 'normal',
-          fontSize: '2rem',
+          fontSize: '2.2rem',
           margin: 0,
           textAlign: 'center'
-        }}
-      >
-        Test d’auto-positionnement – Soft Skills
-      </h1>
+        }}>
+          Auto-positionnement – Soft Skills
+        </h1>
+      </div>
     </header>
   );
 };

@@ -7,24 +7,27 @@ import SummaryIntro from './components/SummaryIntro';
 import Results from './components/Results';
 import { calculateScores } from './utils/score';
 import questions from './data/questions';
+import './App.css';
 
-function ResultsPage() {
+const ResultsPage = () => {
   const location = useLocation();
-  const responses = location.state?.responses ?? {};
-  console.log('📦 Responses reçues dans ResultsPage:', responses);
-
-  // On récupère dimensions et details depuis calculateScores
-  const { dimensions, details } = calculateScores(responses, questions);
-  const results = { dimensions, details };
-  console.log('📈 Résultats calculés:', results);
-
-  // On passe l'objet results en props à Results
+  const responses = location.state?.responses || {};
+  const results = calculateScores(responses, questions);
   return <Results results={results} />;
-}
+};
 
-export default function App() {
+function App() {
+  const { pathname } = useLocation();
+  const isQuiz = pathname === '/';
+
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        width: isQuiz ? '100%' : 'auto',
+        maxWidth: isQuiz ? 'none' : '1280px'
+      }}
+    >
       <TestHeader />
       <Routes>
         <Route path="/" element={<Questionnaire />} />
@@ -34,3 +37,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
